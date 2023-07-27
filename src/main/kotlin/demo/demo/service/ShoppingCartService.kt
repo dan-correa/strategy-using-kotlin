@@ -3,8 +3,9 @@ package demo.demo.service
 import demo.demo.strategy.PaymentStrategy
 
 class ShoppingCart(private val paymentStrategy: PaymentStrategy) {
-    fun checkout(amount: Double) {
-        paymentStrategy.pay(amount)
-        // Lógica adicional de finalização da compra aqui
+    fun checkout(idBuy: Long, nameBuyer : String, paymentMethodId : Long,
+                 itensList: ItensList) {
+
+        //TODO finalizar a lógica de pagamento com a adição no banco de dados
     }
 }
