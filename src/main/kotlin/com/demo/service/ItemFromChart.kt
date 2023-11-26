@@ -1,4 +1,4 @@
-package demo.demo.service
+package com.demo.service
 
 import lombok.AllArgsConstructor
 import lombok.NoArgsConstructor
