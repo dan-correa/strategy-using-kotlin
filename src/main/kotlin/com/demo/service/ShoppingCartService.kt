@@ -1,18 +1,10 @@
 package com.demo.service
 
-import com.demo.domain.BuyEntity
-import com.demo.domain.BuysRepository
-import com.demo.resource.paymentResource.ClosedCart
-import com.demo.strategy.PaymentStrategy
-import lombok.AllArgsConstructor
-import lombok.NoArgsConstructor
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import java.math.BigDecimal
 
 
 @Service
-class ShoppingCartService(private val paymentStrategy: com.demo.strategy.PaymentStrategy) {
+class ShoppingCartService() {
 
 
     fun checkout( closedCart: com.demo.resource.paymentResource.ClosedCart): String {
