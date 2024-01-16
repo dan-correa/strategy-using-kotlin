@@ -1,33 +1,38 @@
 package com.demo.repository.userRepository
 
-import com.demo.enums.PaymentMethodEnum
 import jakarta.persistence.*
-import lombok.EqualsAndHashCode
-import lombok.Getter
-import lombok.Setter
+import jakarta.validation.Valid
+import jakarta.validation.constraints.Email
+import jakarta.validation.constraints.Max
+import jakarta.validation.constraints.Min
+import lombok.Data
+import lombok.NoArgsConstructor
+
 
 @Entity
 @Table(name = "tb_users")
-@Setter
-@Getter
-@EqualsAndHashCode
-class UserEntity (idUser: Long,
-                  nameUser: String,
-                  email: String,
-                  password: String
-) {
+data class UserEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
-    private val id: Long? = null
+    var id: Long? = null,
 
     @Column(name = "name_user")
-    private val nameBuyer: String? = null
+    @Valid
+    @field:Min(5, message = "Minimo de 5 caracteres para o nome")
+    @field:Max(60, message = "Mázimo de 60 caracteres para o nome")
+    var userName: String,
 
     @Column(unique = true, name = "email_user")
-    private val email: String? = null
+    @Valid
+    @field:Email(message = "Deve ser um endereço de e-mail válido")
+    private val email: String,
 
-    @Column(unique=false,name = "password")
-    private val itensList : String?=null
+    @Column(unique = false, name = "password")
+    @Valid
+    @com.demo.utils.passwordUtils.Password
+    var password: String
+) {
+
 
 }
